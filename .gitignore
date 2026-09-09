@@ -1,0 +1,16 @@
+/node_modules
+/.next
+/.venv
+/.mcp-venv
+.env*
+!.env.example
+!agent/.env.example
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+/demo-recordings/
+/AGENTS.md
+/CLAUDE.md
+/.[a-z]*/
+**/__pycache__/
+*.pyc

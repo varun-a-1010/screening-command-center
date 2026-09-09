@@ -1,0 +1,14 @@
+.gcloudignore
+.git
+node_modules
+.next
+.venv
+.mcp-venv
+.env*
+*.log
+*.tsbuildinfo
+**/__pycache__
+AGENTS.md
+CLAUDE.md
+demo-recordings
+.[a-z]*/

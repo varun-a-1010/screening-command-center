@@ -1,0 +1,29 @@
+{
+  "name": "screening-command-center",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail -n agent,web -c magenta,cyan \"npm:dev:agent\" \"npm:dev:web\"",
+    "dev:agent": "PYTHONPATH=agent .venv/bin/adk api_server --auto_create_session --session_service_uri memory:// --artifact_service_uri memory:// --port 8300 agent",
+    "dev:web": "next dev --port 3300",
+    "build": "next build",
+    "start": "next start -p ${PORT:-8080}",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^10.0.5",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "typescript": "^5"
+  }
+}
+

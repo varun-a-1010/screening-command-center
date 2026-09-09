@@ -1,0 +1,4 @@
+google-adk==2.8.0
+python-dotenv>=1.0,<2
+mcp>=1.20,<2
+pydantic>=2.10,<3
