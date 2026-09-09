@@ -2,6 +2,10 @@
 
 A live incident-command agent for film premieres, festival screenings, and virtual cinema events. The product generates operational screening telemetry, publishes it to Grafana Cloud, and asks Gemini on Vertex AI to investigate the incident through the official Grafana MCP server.
 
+Hosted demo: https://screening-command-center-damz3t6oua-uc.a.run.app
+
+Devpost: https://devpost.com/software/screening-command-center
+
 ## The operator loop
 
 1. Four international screening venues report healthy playback.
@@ -27,6 +31,11 @@ AI Observability can be added as a complementary view, but the qualifying integr
 
 Copy `.env.example` to `.env.local`, fill in Grafana and Google Cloud values, then install:
 
+Use Node.js 22 and Python 3.13. Enable Vertex AI and billing in your Google Cloud
+project, and authenticate locally with `gcloud auth application-default login`.
+The Grafana service-account credential is for evidence queries; the OTLP credential
+is for telemetry ingestion. Do not interchange them.
+
 ```bash
 npm install
 python3 -m venv .venv
@@ -37,6 +46,10 @@ npm run dev
 ```
 
 The command center runs at <http://localhost:3300>. The ADK service runs at port 8300.
+
+The Cloud Run container waits for ADK readiness before serving the web application.
+The hosted demo runs with at most one instance because simulation state is shared
+in memory. Cold starts can take longer than a typical web-only application.
 
 Provision the judge-facing Grafana dashboard:
 
