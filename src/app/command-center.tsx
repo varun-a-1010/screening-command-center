@@ -142,6 +142,7 @@ export function CommandCenter() {
         <textarea aria-label="Investigation question" value={query} maxLength={600} rows={3} disabled={busy !== ""} onChange={(e) => setQuery(e.target.value)} />
         <button disabled={busy !== ""} onClick={() => chooseQuestion((questionIndex + 1) % investigations.length)} aria-label="Next investigation">→</button>
       </div>
+      <div className={styles.questionActions}><span>Run the question above against the current screening evidence.</span><button disabled={busy !== "" || query.trim().length < 10} onClick={investigate}>{busy === "investigate" ? "Investigating…" : "Run investigation"}</button></div>
       {(error || statusError) && <p className={styles.error}>{error || statusError}</p>}
       {!report && !error && <div className={styles.emptyReport}><span>{busy === "investigate" ? "Gemini is correlating metrics and logs through Grafana MCP." : "Inject a fault, then ask Gemini to establish audience impact and test competing causes."}</span>{calls.length > 0 && <b>{calls.length} Grafana tools called</b>}</div>}
       {report && <div className={styles.report}>

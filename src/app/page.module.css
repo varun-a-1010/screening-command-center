@@ -60,6 +60,11 @@
 .questionRow button:hover { color: var(--cyan); }
 .emptyReport { min-height: 160px; display: grid; place-items: center; padding: 40px; color: var(--fog); border: 1px solid var(--line); border-top: 0; text-align: center; }
 .emptyReport b { color: var(--cyan); }
+.questionActions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px; border: 1px solid var(--line); border-top: 0; }
+.questionActions span { color: var(--fog); font-size: 14px; }
+.questionActions button { min-height: 48px; padding: 12px 24px; border: 0; background: var(--cyan); color: var(--midnight); font: inherit; font-weight: 700; cursor: pointer; }
+.questionActions button:disabled { opacity: .5; cursor: wait; }
+.questionActions button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
 .error { padding: 18px; color: var(--red); border: 1px solid var(--red); }
 .report { border: 1px solid var(--line); border-top: 0; }
 .reportLead { display: grid; grid-template-columns: 1fr 220px; gap: 30px; padding: 28px; }
