@@ -3,6 +3,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from google.adk.agents import Agent
+from .resilient_model import ResilientGemini, model_chain
 from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
 from google.adk.tools.mcp_tool.mcp_toolset import McpToolset
 from mcp import StdioServerParameters
@@ -75,7 +76,7 @@ def bound_tool_calls(tool, args, tool_context):
 
 root_agent = Agent(
     name="screening_command_center_agent",
-    model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
+    model=ResilientGemini(model=model_chain()[0]),
     description="Investigates live audience-impacting screening incidents using Grafana evidence.",
     instruction="""
 You are the incident commander for a live international film premiere. The only

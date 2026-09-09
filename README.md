@@ -84,3 +84,13 @@ The simulator publishes these metrics with venue, city, screening, rendition, CD
 - `screening_cdn_throughput_mbps`
 
 Loki receives bounded playback-health and segment-error events with matching labels. The agent is instructed not to claim causality and must identify unsupported hypotheses.
+
+## Gemini availability
+
+The primary remains `gemini-3.8-flash`. On HTTP 429, 500, 502, 503, or 504,
+each inference retries once after a short jittered delay, then tries
+`gemini-3.7-flash` and `gemini-3.6-flash` in order. Set the comma-separated
+`GEMINI_FALLBACK_MODELS` variable to override that list; an empty value disables
+cross-model fallback. Authentication, validation, and other non-transient errors
+are not retried. Fallback model names are logged without prompts or credentials.
+This improves availability but cannot guarantee success when all models are busy.
